@@ -19,8 +19,9 @@ services:
     restart: always
     working_dir: /app
     volumes: 
-      - ./data/.env:/app/.env
-      - ./data/upload:/app/storage/app/public/cards/images
+      - ./web/.env:/app/.env
+      - ./web/upload/cards:/app/storage/app/public/cards/images
+      - ./web/upload/avatars:/app/storage/app/public/avatars
     environment:
       - MARIADB_HOST=init-db
       - MARIADB_ROOT_PASSWORD=secret
@@ -37,7 +38,7 @@ services:
     container_name: init-db
     restart: always
     volumes: 
-      - ./data/db:/var/lib/mysql
+      - ./web/db:/var/lib/mysql
     environment:
       - MARIADB_ROOT_PASSWORD=secret
       - MARIADB_DATABASE=init-engineer

@@ -9,18 +9,20 @@
 ## 架構
 
 ```plain
+├── LICENSE ==> 此專案採用 MIT LICENSE
 ├── README.md ==> 你在這裡！
-├── deploy ==> 部署資料夾
-│   ├── data
-│   │   ├── .env.example ==> 環境變數範例
-│   │   ├── db ==> 資料庫
-│   │   └── upload ==> 圖片＆頭像存放位置
-│   ├── docker-compose.yml
-│   └── nginx
-│       ├── certs ==> Nginx SSL 證書
-│       ├── log ==> Nginx Log 紀錄
-│       └── nginx.conf.example ==> Nginx 設定範例
-└── image ==> 純靠北工程師 Docker Image
+├── docker-compose.yml
+├── web
+│   ├── .env.example ==> 環境變數範例
+│   ├── db ==> 資料庫
+│   └── upload
+│       ├── avatars ==> 使用者頭像
+│       └── cards ==> 文章圖片
+├── nginx
+│   ├── certs ==> Nginx SSL 證書
+│   ├── log ==> Nginx Log 紀錄
+│   └── nginx.conf.example ==> Nginx 設定範例
+└── init_engineer ==> 純靠北工程師 Docker Image
     ├── Dockerfile
     ├── README.md ==> 純靠北工程師 Docker Image 自建說明
     └── entrypoint.sh
@@ -35,16 +37,13 @@ git clone https://github.com/tico88612/docker-init.engineer.git
 # 2. 進入到專案資料夾
 cd docker-init.engineer
 
-# 3. 進入到部署資料夾
-cd deploy
-
-# 4. 把 web/.env.example 複製到 web/.env
+# 3. 把 web/.env.example 複製到 web/.env
 cp web/.env.example web/.env
 
-# 5. 把 nginx/nginx.conf.example 複製到 nginx/nginx.conf
+# 4. 把 nginx/nginx.conf.example 複製到 nginx/nginx.conf
 cp nginx/nginx.conf.example nginx/nginx.conf
 
-# 6. 啟動它
+# 5. 啟動它
 docker-compose up -d
 ```
 
