@@ -61,7 +61,7 @@ docker-compose up -d
 
 ### 關閉 500 Debug 錯誤訊息
 
-請把 `data/.env` 裡面的 `APP_DEBUG` 調整為 `true` 即可。
+請把 `data/.env` 裡面的 `APP_DEBUG` 調整為 `false` 即可。
 
 ### HTTPS 設定
 
