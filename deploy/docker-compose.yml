@@ -1,0 +1,47 @@
+version: '3'
+
+services: 
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes: 
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/certs:/etc/nginx/ssl
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
+  init-web:
+    image: tico88612/init.engineer
+    container_name: init-web
+    restart: always
+    working_dir: /app
+    volumes: 
+      - ./data/.env:/app/.env
+      - ./data/upload:/app/storage/app/public/cards/images
+    environment:
+      - MARIADB_HOST=init-db
+      - MARIADB_ROOT_PASSWORD=secret
+      - MARIADB_DATABASE=init-engineer
+      - MARIADB_USER=init-engineer
+      - MARIADB_PASSWORD=secret
+    expose: 
+      - 8000
+    depends_on:
+      - init-db
+
+  init-db:
+    image: mariadb
+    container_name: init-db
+    restart: always
+    volumes: 
+      - ./data/db:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=secret
+      - MARIADB_DATABASE=init-engineer
+      - MARIADB_USER=init-engineer
+      - MARIADB_PASSWORD=secret
+    
+    

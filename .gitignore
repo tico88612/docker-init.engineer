@@ -1,0 +1,11 @@
+/image/init.engineer
+/deploy/data/.env
+/deploy/nginx/nginx.conf
+/deploy/data/web/upload/**
+/deploy/data/db/**
+/deploy/nginx/certs/**
+/deploy/nginx/log/**
+!/deploy/data/web/upload/.gitkeep
+!/deploy/data/db/.gitkeep
+!/deploy/nginx/certs/.gitkeep
+!/deploy/nginx/log/.gitkeep
