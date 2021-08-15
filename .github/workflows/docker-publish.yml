@@ -53,7 +53,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Git Clone Main Project
-        uses: actions/checkout@v2
         run: | 
           cd init_engineer
           git clone https://github.com/init-engineer/init.engineer.git
