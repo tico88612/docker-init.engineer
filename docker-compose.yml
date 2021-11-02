@@ -34,7 +34,7 @@ services:
       - init-db
 
   init-db:
-    image: mariadb
+    image: mariadb:10.5.10-focal
     container_name: init-db
     restart: always
     volumes: 

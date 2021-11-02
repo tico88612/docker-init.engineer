@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y libmcrypt-dev \
 
 WORKDIR /app
 COPY init.engineer /app
-COPY entrypoint.sh .
+COPY entrypoint.sh /
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer install
 
 EXPOSE 8080
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
